@@ -172,3 +172,9 @@ Use the Amazon Linux 2 AMI.
 
    If everything is working correctly, you should get the following response 
 
+   ```
+   [ec2-user@ip-10-0-1-21 client]$ python3 client.py 16
+   The last for card digits are XXXX-XXXX-XXXX-4242
+   The encrypted card number sent to the enclave is -> AQICAHi7Be/X4UaC+zK1hGQo4flo8YJgNGNdfZHnLt7YNC/n1AEm+EHESG8bSehWPe08BcwCAAAAbjBsBgkqhkiG9w0BBwagXzBdAgEAMFgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMeUeYJRWooST1RjsiAgEQgCvL/tF6ZXTIU0UbYvDw6p0P+vRb7Xg62wOTGxmgh+YQ+u4cEMQI0LjiZ84w
+   The enclave returned last 4 digits of card from decrypt as -> "4242"
+   ```
