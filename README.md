@@ -63,7 +63,7 @@ Use the Amazon Linux 2 AMI.
 1. Log in to the instance, clone the repository
 
    ```
-   git clone -b master https://github.com/nseilaz/nitro-enclave-demo.git
+   git clone https://github.com/nseilaz/nitro-enclave-demo.git
    ```
 
 1. Goto AWS console, Key Managment Service (KMS) 
