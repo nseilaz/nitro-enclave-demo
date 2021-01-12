@@ -185,5 +185,5 @@ Use the Amazon Linux 2 AMI.
 
 1. Terminate the EC2 instances
 2. Delete the SQS Queue
-3. Delete the KMS key
+3. Delete the KMS key, this is done by scheduling the deletion.
 4. Delete the IAM Role
