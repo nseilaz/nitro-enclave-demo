@@ -33,6 +33,8 @@ A thought from my experience, initially I had considered running an "application
 
 ## Installation guide
 
+Note the EC2 instance being used for Nitro Enclaves are not free tier, check the relevant EC2 pricing for the respective region you will be utilizing. 
+
 1. Create an EC2 instance with Nitro Enclave enabled. See [AWS documentation](https://docs.aws.amazon.com/enclaves/latest/user/create-enclave.html) for steps and requirement.  I launched a C5 xlarge.  Ensure to provide sufficient storage space on the instance root volume, 20 GB is what I used, if you do not provide sufficient storage space the enclave containers will fail to build. You need to SSH into the EC2 instances, ensure that it has a security group that allows that to happen, the instance also requires access to the internet to be able to download packages, you can place it behind a NAT GW if you desire or in a public facing subnet and maintain a good security posture, lock down access to know IP address.
 
 Use the Amazon Linux 2 AMI.
@@ -178,3 +180,10 @@ Use the Amazon Linux 2 AMI.
    The encrypted card number sent to the enclave is -> AQICAHi7Be/X4UaC+zK1hGQo4flo8YJgNGNdfZHnLt7YNC/n1AEm+EHESG8bSehWPe08BcwCAAAAbjBsBgkqhkiG9w0BBwagXzBdAgEAMFgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMeUeYJRWooST1RjsiAgEQgCvL/tF6ZXTIU0UbYvDw6p0P+vRb7Xg62wOTGxmgh+YQ+u4cEMQI0LjiZ84w
    The enclave returned last 4 digits of card from decrypt as -> "4242"
    ```
+
+##Clean up
+
+1. Terminate the EC2 instances
+2. Delete the SQS Queue
+3. Delete the KMS key
+4. Delete the IAM Role
