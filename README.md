@@ -186,14 +186,17 @@ Use the Amazon Linux 2 AMI.
    The enclave returned last 4 digits of card from decrypt as -> "4242"
    ```
 
-##Clean up
+## Clean up
 
 1. Terminate the EC2 instances
 2. Delete the SQS Queue
 3. Delete the KMS key, this is done by scheduling the deletion.
 4. Delete the IAM Role
 
-Troubleshooting
+## Troubleshooting
+
+[ E27 ] Insufficient memory
+
 [ E27 ] Insufficient memory available. User provided `memory` is 2244 MB, which is more than the available hugepage memory.
 The size of the image may change over time that is used for the build.  The following process should resolve the issue. 
 Note on the error line it indicates how much memory is required, this will be higher then what has been allocated in the 
@@ -213,3 +216,4 @@ nitro-cli describe-enclaves
 
 Then note you enclaveID
 nitro-cli console --enclave-id  PASTE_ENCLAVE_ID here you noted in the previous output. 
+-------
