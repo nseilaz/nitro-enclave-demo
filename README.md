@@ -62,9 +62,8 @@ Use the Amazon Linux 2 AMI.
 
    ```
    # memory_mib: 512
-   memory_mib: 2048
+   memory_mib: 2300
    ```
-
 1. Enable Docker and Nitro Enclaves Allocator
 
    ```
@@ -153,6 +152,12 @@ Use the Amazon Linux 2 AMI.
    ```
    Started enclave with enclave-cid: 16, memory: 1024 MiB, cpu-ids: [1, 3]
    ```
+   If you get an error indicating an out of memory as follows
+   Start allocating memory...
+   [ E27 ] Insufficient memory available. User provided `memory` is 2244 MB, which is more than the available hugepage memory.
+   You can increase the available memory by editing the `memory_mib` value from '/etc/nitro_enclaves/allocator.yaml' and then enable the nitro-enclaves- allocator.service.
+   
+   Look to the end of this document for the troubleshooting section.
 
 1. Open a new SSH session, run the `vsock-proxy` tool
 
@@ -187,3 +192,24 @@ Use the Amazon Linux 2 AMI.
 2. Delete the SQS Queue
 3. Delete the KMS key, this is done by scheduling the deletion.
 4. Delete the IAM Role
+
+Troubleshooting
+[ E27 ] Insufficient memory available. User provided `memory` is 2244 MB, which is more than the available hugepage memory.
+The size of the image may change over time that is used for the build.  The following process should resolve the issue. 
+Note on the error line it indicates how much memory is required, this will be higher then what has been allocated in the 
+/etc/nitro_enclaves/allocator.yaml.  Edit the file and increase the memory size to be higher.
+
+Reboot the EC2 instance. 
+
+Then 
+
+change to the server directory, run the following
+nitro-cli run-enclave --cpu-count 2 --memory 2300 --eif-path nitro-enclave-demo.eif --debug-mode
+
+You will need to open up additional SSH terminals for the rest of the exercise
+
+To get a console debug view of the enclave you need to run these commands
+nitro-cli describe-enclaves
+
+Then note you enclaveID
+nitro-cli console --enclave-id  PASTE_ENCLAVE_ID here you noted in the previous output. 
