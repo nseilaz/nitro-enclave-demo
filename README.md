@@ -212,8 +212,10 @@ nitro-cli run-enclave --cpu-count 2 --memory 2300 --eif-path nitro-enclave-demo.
 You will need to open up additional SSH terminals for the rest of the exercise
 
 To get a console debug view of the enclave you need to run these commands
+
 nitro-cli describe-enclaves
 
 Then note you enclaveID
-nitro-cli console --enclave-id  PASTE_ENCLAVE_ID here you noted in the previous output. 
+
+nitro-cli console --enclave-id  PASTE_ENCLAVE_ID noted in the previous output. 
 
