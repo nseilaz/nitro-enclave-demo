@@ -216,4 +216,4 @@ nitro-cli describe-enclaves
 
 Then note you enclaveID
 nitro-cli console --enclave-id  PASTE_ENCLAVE_ID here you noted in the previous output. 
--------
+
