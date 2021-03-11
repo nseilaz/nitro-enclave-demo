@@ -153,10 +153,10 @@ Use the Amazon Linux 2 AMI.
    Started enclave with enclave-cid: 16, memory: 1024 MiB, cpu-ids: [1, 3]
    ```
    If you get an error indicating an out of memory as follows
+   
    Start allocating memory...
    [ E27 ] Insufficient memory available. User provided `memory` is 2244 MB, which is more than the available hugepage memory.
-   You can increase the available memory by editing the `memory_mib` value from '/etc/nitro_enclaves/allocator.yaml' and then enable the nitro-enclaves- allocator.service.
-   
+      
    Look to the end of this document for the troubleshooting section.
 
 1. Open a new SSH session, run the `vsock-proxy` tool
